@@ -17,9 +17,10 @@ const createHash = async () => {
     inputArr.push(parseInt(await ask("")))
   }
   console.log(inputArr);
-  const hash:Record<number,number> = {}
+  const hash:Map<number,number> = new Map()
   for (const ele of inputArr) {
-    hash[ele] = (hash[ele] || 0) + 1
+    hash.set(ele, (hash.get(ele) || 0) + 1)
+    console.log(ele, hash.get(ele) || 0);
   }
   console.log(hash);
   
