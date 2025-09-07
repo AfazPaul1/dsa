@@ -36,6 +36,6 @@ console.log(separateChaining(5, [92,4,14,24,44,91]));
 //ok the errors were 2
 //one when i am interating over this arr it results in empty null spots
 //removed that in js by modifying the if to insert only a empty aarr not possible in ts
-//ok  dont think it was relevant
+//ok  dont think it was relevant nor 2 errors only 1
 // so what solved it was filling a new array with empty array at all spots 
 //this ensured no null values
