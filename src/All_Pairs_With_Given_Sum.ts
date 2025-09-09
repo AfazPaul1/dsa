@@ -1,4 +1,4 @@
-//import { readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 function findAllPairs(arr: number[], target: number) {
     const hashTable = new Map()
 
@@ -47,38 +47,40 @@ function findAllPairs(arr: number[], target: number) {
     //Map(3) { 10 => [ 0, 4 ], 20 => [ 1, 3 ], 30 => [ 2, 5 ] }
     //**********************************
 
-    for (let i = 0; i < arr.length; i++) {
-        const mapArr = hashTable.get(arr[i])
-        //console.log(mapArr);
-
-        if (mapArr) {
-            //incorrect way
-            //the return value of mappArr.push(i) is not the new array but the length of the new array
-            //so the key 10's value was being replaced by the length of array which is 2
-            //so instead od it being 10 => [0,4] it was 10 => 2
-            //realised it when i logged step by step and checked push's return
-            //hashTable.set(arr[i], mapArr.push(i) )
-            mapArr.push(i)
-            hashTable.set(arr[i], mapArr)
-        } else {
-            hashTable.set(arr[i], [i])
-        }
-        //console.log(hashTable);
-
-    }
-
-
     //**********************************
-    for (const [key, value] of hashTable) {
-        if (hashTable.has(target - key)) {
-              for (const ele of value) {
-                for (const ele1 of hashTable.get(target - key)) {
-                    if (ele < ele1) result.push([ele, ele1])
-                }
-            }
-        }
+    //3rd approach
+    // for (let i = 0; i < arr.length; i++) {
+    //     const mapArr = hashTable.get(arr[i])
+    //     //console.log(mapArr);
 
-    }
+    //     if (mapArr) {
+    //         //incorrect way
+    //         //the return value of mappArr.push(i) is not the new array but the length of the new array
+    //         //so the key 10's value was being replaced by the length of array which is 2
+    //         //so instead od it being 10 => [0,4] it was 10 => 2
+    //         //realised it when i logged step by step and checked push's return
+    //         //hashTable.set(arr[i], mapArr.push(i) )
+    //         mapArr.push(i)
+    //         hashTable.set(arr[i], mapArr)
+    //     } else {
+    //         hashTable.set(arr[i], [i])
+    //     }
+    //     //console.log(hashTable);
+
+    // }
+
+
+    
+    // for (const [key, value] of hashTable) {
+    //     if (hashTable.has(target - key)) {
+    //           for (const ele of value) {
+    //             for (const ele1 of hashTable.get(target - key)) {
+    //                 if (ele < ele1) result.push([ele, ele1])
+    //             }
+    //         }
+    //     }
+
+    // }
     //before size check     [
     //   [ 1, 2 ], [ 1, 5 ],
     //   [ 3, 2 ], [ 3, 5 ],
@@ -105,17 +107,35 @@ function findAllPairs(arr: number[], target: number) {
     //looks like the method is ok and they are just sorting the array this gives
     //also there is another way to solve this see next commit
     //**********************************
-    result.sort((a, b) => a[0] - b[0])
+
+    
+    //finale
+    //so this is 2 sum?    
+    for (let i = 0; i < arr.length; i++) {
+        const complement = target - arr[i]
+        if (hashTable.has(complement)) {
+            for (const index of hashTable.get(complement)) {
+                result.push([index, i])
+            }
+        }
+        if(!hashTable.has(arr[i])) {
+            hashTable.set(arr[i], [])
+        }
+        hashTable.get(arr[i]).push(i)
+        //console.log(hashTable);
+    }
+
+    //result.sort((a, b) => a[0] - b[0])
     return result
 }
 // console.time("minSubsets execution time"); // Start the timer
- console.log(findAllPairs([10, 20, 30, 20, 10, 30], 50));
+ //console.log(findAllPairs([10, 20, 30, 20, 10, 30], 50));
  
 // console.timeEnd("minSubsets execution time");
-//const data = readFileSync('large_array1000.json', 'utf8');
-//const target = 150;
-//const largeArray = JSON.parse(data);
-// console.time("minSubsets execution time"); // Start the timer
-// const res = findAllPairs(largeArray, target);
-// console.timeEnd("minSubsets execution time");
-// console.log(res);
+const data = readFileSync('large_array1000.json', 'utf8');
+const target = 150;
+const largeArray = JSON.parse(data);
+console.time("minSubsets execution time"); // Start the timer
+const res = findAllPairs(largeArray, target);
+console.timeEnd("minSubsets execution time");
+//console.log(res);
