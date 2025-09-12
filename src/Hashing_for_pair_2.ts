@@ -1,3 +1,7 @@
+//this is duplicate proof 
+//ie suppose a arr has only one 4 and the sum is 8 only if 4 occurs 2 times should 4 be considere a pair
+//the hash ensures that
+//and not count the 4 two times
 function sumExists(arr: number[], sum:number) {
     const hashArr = new Set()
     for (const ele of arr) {
