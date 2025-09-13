@@ -1,5 +1,5 @@
 class HashTable {
-    table: string[];
+    table: string[][];
     constructor() {
         this.table = [];
     }
@@ -18,17 +18,31 @@ class HashTable {
 
     put(key:string, value:string) {
         let hash = this.modularHash(key)
-        return this.table[hash] = value
+        if (this.table[hash] === undefined) {
+            return this.table[hash] = [key, value]
+        } else {
+            while (this.table[hash] !== undefined) {
+                hash++
+            }
+            return this.table[hash] = [key, value]
+        }
     }
     get(key:string) {
-         return this.table[this.modularHash(key)]
+        let hash = this.modularHash(key)
+        while (this.table[hash][0] !== key) {
+            hash++
+        }
+        return this.table[hash][1]
+
     }
 }
 
 const hashTable = new HashTable();
 //console.log(hashTable.modularHash("Jared Nielsen"));
 hashTable.put("Jared Nielsen", "@jarednielsen")
+hashTable.put("NASA", "@nasa");
+hashTable.put("ASAN", "@asan");
 console.log(hashTable.table);
 const val = hashTable.get("Jared Nielsen")
 console.log(val);
-
+console.log(hashTable.get("ASAN"));
