@@ -6,7 +6,6 @@ function quadraticProbing(arr:number[], m:number) {
             console.log(table[hash], key);
             if (table[hash] === key) {  
                 return
-                console.log(table[hash], key);
             }
             if (table[hash] === -1) {
                 table[hash] = key
@@ -20,6 +19,9 @@ function quadraticProbing(arr:number[], m:number) {
                 while (table[calcHash] !== -1) {
                     //console.log("inside while");
                     //console.log("i: " + i + " failed hash: " + hash);
+                    if (table[calcHash] === key) {  
+                        return
+                    }
                     i++
                     //console.log(i);
                     calcHash = (hash+(i**2))%m
