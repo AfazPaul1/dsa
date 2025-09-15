@@ -3,33 +3,35 @@ class quadraticHashTable {
     size:number;
     constructor(size:number) {
         this.size = size
-        this.table = []
+        this.table = Array(size).fill(-1) //how else can i have -1 in empty slots?
     }
+    
     modularHash(key:number) {
-        const hash = key%this.size
+        let hash = key%this.size
+        if (this.table[hash] === -1) {
+            this.table[hash] = key
+        } else {
+            //added i
+            let i = 0
+            while (this.table[hash] !== -1) {
+                i++
+                hash = (hash+i**2)%5
+            }
+            this.table[hash] = key
+        }
         return hash
     }
     //no need for a seprate has? just use the index to get from table like table[i]
     put(key:number) {
         let hash = this.modularHash(key)
-        if (this.table[hash] === undefined) {
-            this.table.push(key)
-        } else {
-            //added i
-            let i = 0
-            while (this.table[hash] !== undefined) {
-                i++
-                hash = 
-                //hash = hash**2 //how do i do square like += but i dont need the older value right? just its square we are reassigninging
-                //ok thats not how we do it
-
-
-            }
-        }
     }
 
 }
 const tab = new quadraticHashTable(5)
-const hash1 = tab.modularHash(5)
-console.log(hash1);
+//const hash1 = tab.modularHash(5)
+const arr1 = [21, 10, 33, 43]
+for (const ele of arr1) {
+    tab.put(ele)
+}
+console.log(tab.table);
 
