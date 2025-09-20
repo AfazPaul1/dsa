@@ -5,7 +5,6 @@ function mergeSort(arr:number[], low:number, high:number) {
         return
     }
     let mid = Math.floor((low+high)/2)
-    
     mergeSort(arr, low, mid)
     mergeSort(arr, mid+1, high)
     merge(arr, low, mid, high)
@@ -37,7 +36,7 @@ function merge(arr:number[], low:number, mid:number, high:number) {
         right++
     }
     for (let i = 0; i < temp.length; i++) {
-        arr[low] = temp[i]
+        arr[low] = temp[i] //need to use low cause using i will match from 0 but low could be anything and only that subarray was sortedhere 
         low++
     }
     //arr = [...temp]
