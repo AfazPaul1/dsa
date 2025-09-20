@@ -1,7 +1,11 @@
 function mergeSort(arr:number[], low:number, high:number) {
     //let mid = Math.round((low+high)/2)// rounds 2.5 to 3 rounds to nearest integer
     //need to round down
+    if (low === high) {
+        return
+    }
     let mid = Math.floor((low+high)/2)
+    
     mergeSort(arr, low, mid)
     mergeSort(arr, mid+1, high)
     merge(arr, low, mid, high)
@@ -32,8 +36,12 @@ function merge(arr:number[], low:number, mid:number, high:number) {
         temp.push(arr[right])
         right++
     }
-    arr = [...temp]
-    //return temp
+    for (let i = 0; i < temp.length; i++) {
+        arr[low] = temp[i]
+        low++
+    }
+    //arr = [...temp]
+    //return arr
     
 }  
-console.log(merge([13, 24, 46, 9, 20, 52], 0, 2, 5));
+//console.log(merge([13, 24, 46, 9, 20, 52], 0, 2, 5));
