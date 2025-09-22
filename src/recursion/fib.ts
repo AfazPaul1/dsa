@@ -11,7 +11,7 @@ function fib(n:number, cache:Map<number, number>): number{
         cache.set(n, result)
         return result
     }
-}
+} 
 console.time()
 //console.log(fib(30));
 //832040
