@@ -1,8 +1,7 @@
-function power(x:number, n:number, acc:number) {
+function power(x:number, n:number):number {
     if (n === 0) {
-        return acc
+        return 1
     }
-    acc = acc*x
-    return power(x, n-1, acc)
+    return x * power(x, n-1)
 }
-console.log(power(2, 5, 1));
+console.log(power(2, 5));
