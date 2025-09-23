@@ -1,7 +1,7 @@
 function reverse(arr:number[], i, n) {
     //console.log(i, i>n/2, n/2);
     
-    if(i > n/2) return arr
+    if(i > n) return arr
     arr = swap(arr, i, n-1)
     return reverse(arr, i+1, n-1)
 }
