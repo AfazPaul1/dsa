@@ -12,12 +12,12 @@ function subSeqSum(arr:number[], seq:number[], n:number, i:number, sum:number, g
     seq.push(arr[i])
     sum+=arr[i]
     if (subSeqSum(arr, seq, n, i+1, sum, gnSum) === true) {
-        return
+        return true  
     }
     seq.pop()
     sum-=arr[i]
     if (subSeqSum(arr, seq, n, i+1, sum, gnSum) === true) {
-        return
+        return true
     }
 
 }
