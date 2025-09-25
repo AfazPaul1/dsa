@@ -1,19 +1,24 @@
 //print only the first sum match
-let flag = false
-function subSeqSum(arr:number[], seq:number[], n:number, i:number, sum:number, gnSum) {
+
+function subSeqSum(arr:number[], seq:number[], n:number, i:number, sum:number, gnSum:number) {
     if (i >= n ) {
-        if(sum === gnSum && flag === false) {
-            flag = true
+        if(sum === gnSum) {
             console.log(seq, sum);
-        }
-        return 
+            return true
+        } else {
+            return false
+        } 
     }
     seq.push(arr[i])
     sum+=arr[i]
-    subSeqSum(arr, seq, n, i+1, sum, gnSum)
+    if (subSeqSum(arr, seq, n, i+1, sum, gnSum) === true) {
+        return
+    }
     seq.pop()
     sum-=arr[i]
-    subSeqSum(arr, seq, n, i+1, sum, gnSum)
+    if (subSeqSum(arr, seq, n, i+1, sum, gnSum) === true) {
+        return
+    }
 
 }
 console.log(subSeqSum([1, 2, 1], [], 3, 0, 0, 3));
