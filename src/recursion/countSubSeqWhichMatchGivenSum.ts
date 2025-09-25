@@ -1,16 +1,14 @@
-function subSeqSum(arr:number[], seq:number[], n:number, i:number, sum:number, gnSum, count) {
+function subSeqSum(arr:number[], seq:number[], n:number, i:number, sum:number, gnSum, count):number {
     if (i >= n) {
         if(sum === gnSum) {
-            count++
-            console.log(seq, sum, count);
+            return 1 
         }
-        return
+        return 0
     }
-    seq.push(arr[i])
     sum+=arr[i]
-    subSeqSum(arr, seq, n, i+1, sum, gnSum, count)
-    seq.pop()
+    let l = subSeqSum(arr, seq, n, i+1, sum, gnSum, count)
     sum-=arr[i]
-    subSeqSum(arr, seq, n, i+1, sum, gnSum, count)
+    let r = subSeqSum(arr, seq, n, i+1, sum, gnSum, count)
+    return l + r
 }
-console.log(subSeqSum([1, 2, 1], [], 3, 0, 0, 3, 0));
+console.log(subSeqSum([1, 2, 1], [], 3, 0, 0, 1, 0));
