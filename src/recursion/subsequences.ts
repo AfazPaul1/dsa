@@ -1,14 +1,14 @@
 function subsequences(arr, subseq, n, i) {
     if (i >= n) {
-        //console.log(subseq);
+        console.log(subseq);
         return
     }
     subseq.push(arr[i])
     subsequences(arr, subseq, n, i+1)
-    console.log("before", subseq, i);
+    //console.log("before", subseq, i);
     
-    subseq.splice(i-1, 1)
-    console.log("after", subseq, i);
+    subseq.pop()
+    //console.log("after", subseq, i);
     
     subsequences(arr, subseq, n, i+1)
 }
