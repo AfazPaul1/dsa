@@ -10,4 +10,4 @@ function pattern5(n) {
         
     }
 }
-console.log(pattern5(5));
+console.log(pattern5(7));//he's doing the same thing?
