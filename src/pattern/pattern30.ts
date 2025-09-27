@@ -1,7 +1,7 @@
 function pattern30(n) {
     for (let i = 1; i < 2*n; i++) {
         let pattern = ""
-        let numberOfSpaces = i > n? i-n:(2*n)-i
+        let numberOfSpaces = i <= n? (2*n)-i : i
         let noOfCols =  i > n ? (2*n)-i : i
         for (let s = 0; s < numberOfSpaces; s++) {
             pattern+="  "//double space
