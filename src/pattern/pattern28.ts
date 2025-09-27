@@ -7,7 +7,7 @@
             pattern+=" " 
         }
         for (let j = 0; j < totalCols; j++) {
-            pattern+="*"
+            pattern+="* "
             
         }
         console.log(pattern);
@@ -16,13 +16,8 @@
     }
  }
  console.log(pattern28(5));
-     
-//     *
-//    **
-//   ***
-//  ****
-// *****
-//  ****
-//   ***
-//    **
-//     *
+ //tried with zeroes
+// 00000
+// 0000*0
+// 000*0*0
+// 00*0*0*0
