@@ -14,18 +14,14 @@ function findPivot(arr:number[], low:number, high1:number) {
     let i = low
     let j = high1
     while(i<j){
-        while(arr[i] <= pi) {//did arr[pi] while pi is not an index but the value
+        while(arr[i] <= pi && i <= high1) { // i value increases above high in [3,2]  
             i++
         }
-        while(arr[j] >= pi) {
+        while(arr[j] >= pi && j > low) { //for [1.3.2] j becomes -1
             j--
         }
-        [arr[i], arr[j]] = [arr[j], arr[i]]
-    }
-    //[4,3,2,7,1,9,5, 6,] this is how it looks when loop finally fails
-    //that last step was unnecessary
-    [arr[pi], arr[j]] = [arr[j], arr[pi]] //this iswrong since pi is a value and not a index
-    //[4,3,2,1,7,9,5,6]
-    return pi
+    if (i<j) [arr[i], arr[j]] = [arr[j], arr[i]]
+    } 
+    [arr[low], arr[j]] = [arr[j], arr[low]]
+    return j
 }
-//[4,3,2,5,7,9,1, 5,]
