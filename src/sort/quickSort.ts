@@ -36,22 +36,17 @@ function findPivot(arr:number[], low:number, high1:number) {
     return j
 }
 function lomutoPartition(arr, low, high1) {
-    const n = arr.length
     let pi = arr[high1]
-    let i = -1
-    for (let j = 0; j < n; j++) {
-        if (arr[j] <= pi) {
-            i++
+    let i = low-1
+    for (let j = low; j <= high1-1; j++) {
+        if (arr[j] < pi) {
+            i++; // after all those changes what it took was this semicolon
             [arr[i], arr[j]] = [arr[j], arr[i]] 
-            //when i =1  j =4
-            //we swap 40 looks like below
-            //(5) [10, 30, 40, 90, 80]     
         }
     }
     [arr[i+1], arr[high1]] = [arr[high1], arr[i+1]]
     return i+1
 }
-//console.log(quickSort([10, 80, 30, 90, 40], 0, 4));
+console.log(quickSort([10, 80, 30, 90, 40], 0, 4));//[ 10, 30, undefined, 40, 80, 90 ]
 //console.log(quickSort([4, 1, 3, 9, 7], 0, 4));
-console.log(quickSort([4,6,2,5,7,9,1,3], 0, 7)); //resulting in error probably trying to swap with index -1
 
