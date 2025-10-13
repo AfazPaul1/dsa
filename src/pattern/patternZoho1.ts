@@ -8,7 +8,7 @@ function patternZoho(n) {
         for (let s = 0; s <= noOfSpaces ; s++) {
             pattern+=" "
         }
-        sum+=noOfCols
+        sum = i <= n ? sum + noOfCols : sum - noOfCols
         for (let i = sum; i >= noOfCols; i--) {
             pattern+=` ${i}`
         }
