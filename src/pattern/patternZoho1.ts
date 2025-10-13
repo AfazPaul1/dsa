@@ -2,8 +2,8 @@ function patternZoho(n) {
     
     let sum = 0
     for (let i = 1; i <=2*n; i++) {
-        let noOfSpaces = i <= n ? (2*n)-i :i        
-        let noOfCols = i > n ? (2*n)-i : i
+        let noOfSpaces = i <= n ? (2*n)-i+1 :i        
+        let noOfCols = i > n ? (2*n)-i+1 : i
         let pattern = ""
         for (let s = 0; s <= noOfSpaces ; s++) {
             pattern+=" "
