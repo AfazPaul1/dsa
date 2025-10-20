@@ -1,5 +1,5 @@
 function pattern30(n) {
-    for (let i = 1; i < 2*n; i++) {
+    for (let i = 1; i <= 2*n; i++) {
         let pattern = ""
         let numberOfSpaces = i <= n? (2*n)-i : i
         let noOfCols =  i > n ? (2*n)-i : i // have already seen this before since pattern 5 where it increases then decreases

@@ -15,3 +15,18 @@ function patternX(str) {
     }
 }
 console.log(patternX("geeksforgeeks"));
+// 5 . Print the given input string in ‘X’ format.
+// Note: The string length will be of odd length.
+// g           s
+//  e         k 
+//   e       e  
+//    k     e
+//     s   g
+//      f r
+//       o
+//      f r
+//     s   g
+//    k     e
+//   e       e
+//  e         k
+// g           s

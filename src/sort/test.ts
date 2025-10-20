@@ -30,12 +30,12 @@
 // console.log(selection([10,54,3, 9,4, 65, 32]));
 
 function bubble(arr) {
-    for (let i = arr.length; i > 0; i--){ //is arr.length-1 really required?
+    for (let i = arr.length-1; i > 0; i--){ //is arr.length-1 really required?  //AH YES AT ONE POINT WHEN J = 6 there is no 7th index to check against so its arr.length-1
         let isSwapped = false
-        for (let j = 0; j < arr.length; j++) {
+        for (let j = 0; j < arr.length-1; j++) {
             //console.log("hi");
             
-            if(arr[j] > arr[j+1]){
+            if(arr[j] > arr[j+1]){ 
                 console.log(arr[j], arr[j+1]);
                 [arr[j], arr[j+1]] = [arr[j+1], arr[j]]
                 isSwapped = true
@@ -48,8 +48,8 @@ function bubble(arr) {
     }
     return arr
 }
-//console.log(bubble([10,54,3, 9,4, 65, 32] ));
-console.log(bubble([
-   3,  4,  9, 10,
-  32, 54, 65
-] ));
+console.log(bubble([10,54,3, 9,4, 65, 32] ));
+// console.log(bubble([
+//    3,  4,  9, 10,
+//   32, 54, 65
+// ] ));
