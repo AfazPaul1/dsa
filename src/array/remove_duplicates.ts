@@ -3,16 +3,24 @@
 //Output: [1,2,3,_,_,_,_]
 //Explanation: Total number of unique elements are 3, i.e[1,2,3] and Therefore return 3 after assigning [1,2,3] in the beginning of the array.
 function removeDuplicates(arr) { 
-    const newSet = new Set(arr) //maybe ill try using a custom set
     let i = 0
-    for (const ele of newSet ) {
-        arr[i] = ele
+    let j = 0
+    while( i < arr.length ){
+        if(arr[i] !== arr[i+1]) {
+            i++
+            continue
+        }
+        j = i
+        while(arr[j] === arr[j+1] && j <= arr.length-1) {
+            j++
+        }
+        if(j >= arr.length-1) return i+1
+        arr[i+1] = arr[j+1]
         i++
     }
-    return i
+    return arr
+    
+
 }
-console.log(removeDuplicates([1,2,3,3,4,5,5,5]));
-//set takes nlogn //actually idk about this is this a hashset or bbst?
-// the for is N
-//hence nlogn + N 
-//space complexity is N cause worst case the created set could be the same size as input arr
+console.log(removeDuplicates([1,2,3,3,3,3,4,4,4,5]));
+//[ 1,2,3,4,3,4,5,4,5,5,]
