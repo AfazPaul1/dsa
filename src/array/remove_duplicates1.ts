@@ -3,17 +3,12 @@
 // each element appears only once. 
 // Return an array containing these distinct elements in the same order as they appeared.
 function removeDuplicates1(arr) {
-    let i = 0
     let noDup = [arr[0]]
     for(let j = 1; j< arr.length; j++) {
-        if(arr[i]!== arr[j] && arr[j] !== undefined) {
+        if(noDup[noDup.length-1]!== arr[j] ) {//should have been checking the last element i pushed into the new array//also that i was useless
             noDup.push(arr[j])
-            i++
         }
     }
     return noDup
 }
-console.log(removeDuplicates1([1, 2, 2, 3, 4, 5, 6, 6]));
-//[1, 2, 3, 4,5, 6, 6]
-//when j = 7 and i = 5 the comaprision turn true and inserts another 6
-//the issue is probably with me inserting j
+console.log(removeDuplicates1([1, 2, 2, 2, 3, 4, 5, 6, 6]));
