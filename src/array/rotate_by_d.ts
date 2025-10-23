@@ -1,15 +1,13 @@
 //either left or right
 function rotate_by_d(arr, d) {
-    let temp = arr.slice(0, 3)
+    let temp = arr.slice(0, d)
     let n = arr.length
     d = d%n
     for (let i = d; i < n; i++) {
         arr[i-d] = arr[i]
     }
-    let k = 0
-    for (let j = n-d; j < n; j++) {
-        arr[j] = temp[k]
-        k++
+    for (let j = 0; j < d; j++) {
+        arr[(n-d)+j] = temp[j]
     }
     return arr
 }
