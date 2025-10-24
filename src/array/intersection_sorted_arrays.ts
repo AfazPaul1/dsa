@@ -9,6 +9,7 @@ function intersection_sorted_arrays(a, b) {
                 visited[j]=1
                 break
             }
+            if(b[j] > a[i]) break
         }
     }
     return intersection
