@@ -1,14 +1,10 @@
+//summation
 function missing_number(arr, N) {  
-    const hash =  new Map<number, boolean>()
-    for (const ele of arr) {
-        hash.set(ele, true)
+    let sum = 0
+    for (let i = 0; i < arr.length; i++) {
+        sum+=arr[i]
     }
-    for (let i = 1; i < N; i++) {
-        if (!hash.has(i)) {
-            return i
-        }
-    }
-}
-console.log(missing_number([1,2,4,5], 5 ));
-
-  
+    let ogSum = N*(N+1)/2
+    return ogSum-sum
+}    
+console.log(missing_number([1,2,4,5], 5));
