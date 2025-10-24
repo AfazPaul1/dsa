@@ -1,16 +1,13 @@
 function missing_number(arr, N) {  
-    const hash =  new Map<number, number>()
-    for (let i = 0; i <= N+1; i++) {
-        if(arr[i] === i) hash.set(i, 1)
-        else {
-            hash.set(i, 0)
+    const hash =  new Map<number, boolean>()
+    for (const ele of arr) {
+        hash.set(ele, true)
+    }
+    for (let i = 1; i < N; i++) {
+        if (!hash.has(i)) {
+            return i
         }
     }
-    for (const [j, val] of hash) {
-        if (val === 0 && j !==0) {
-            return j
-        }
-    } 
 }
 console.log(missing_number([1,2,4,5], 5 ));
 
