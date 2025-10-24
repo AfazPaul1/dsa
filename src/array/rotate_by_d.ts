@@ -8,7 +8,7 @@ function rotate_by_d(arr, d) {
     return arr
  }
  console.log(rotate_by_d([1, 2, 2, 7, 3, 4, 5, 6, 6], 3));
- console.log(rotate_by_d([1, 2, 2, 7, 3, 4, 5, 6, 6], 30));
+ console.log(rotate_by_d([1, 2, 2, 7, 3, 4, 5, 6, 6], 9));
 //[7, 3, 4, 5, 6, 6, 1, 2, 2]
 function reverse(arr, startIndex, endIndex) {
     if (startIndex >= endIndex) {

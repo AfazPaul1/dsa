@@ -5,7 +5,7 @@
 function removeDuplicates1(arr) {
     let noDup = [arr[0]]
     for(let j = 1; j< arr.length; j++) {
-        if(noDup[noDup.length-1]!== arr[j] ) {//should have been checking the last element i pushed into the new array//also that i was useless
+        if(noDup[noDup.length-1]!== arr[j] ) {//should have been checking the last element i pushed into the new array//also that i was useless i could use it to insert into the noDUp but not necessary guess i got confused by 2 pointer
             noDup.push(arr[j])
         }
     }
