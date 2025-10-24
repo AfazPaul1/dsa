@@ -1,16 +1,36 @@
-function union_of_2_sorted_arrays(arr1, arr2, n, m) {
-    const res = new Set<number>() 
-    for (let i = 0; i < arr1.length; i++) {
-        res.add(arr1[i])
+function union_of_2_sorted_arrays(arr1, arr2) {
+    let i = 0
+    let j = 0
+    let n = arr1.length
+    let m = arr2.length
+    let union: number[] = []
+    
+    while(i < n && j < m) {
+        if(arr1[i] < arr2[j]) {
+            if(union.length === 0 || union[union.length-1]!==arr1[i]) {
+                union.push(arr1[i])
+            }
+            i++
+        } else {
+            if(union.length === 0 || union[union.length-1]!==arr2[j]) {
+                union.push(arr2[j])
+            }
+            j++
+        }
     }
-    for (let j = 0; j < arr2.length; j++) {
-        res.add(arr2[j])   
+    while(i<n) {
+        if(union.length === 0 || union[union.length-1]!==arr1[i]) {
+            union.push(arr1[i])
+        }
+        i++
     }
-    let union = []
-    for (const ele of res) {
-        union.push(ele)
+    while(j<m) {
+        if(union.length === 0 || union[union.length-1]!==arr2[j]) {
+            union.push(arr2[j])
+        }
+        j++
     }
-    return union.sort((a,b) => a-b)
+    return union
 }
-console.log(union_of_2_sorted_arrays([1,2,3,4,6,6,6,7,8,9], [2,3,4,4,5,24], 5, 5));
- //Set(10) { 1, 2, 3, 4, 6, 7, 8, 9, 5, 24 }    
+console.log(union_of_2_sorted_arrays([1,2,3,4,6,6,6,7,8,9], [2,3,4,4,5,24]));
+ //[1, 2, 3, 4, 5, 6, 7, 8, 9, 24]  
