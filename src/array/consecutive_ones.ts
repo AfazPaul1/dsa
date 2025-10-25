@@ -4,10 +4,11 @@ function consecutive_ones(arr) {
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === 1) {
             conseq +=1
+            max = Math.max(max, conseq)
         } else {
             conseq=0
         }
-        max = Math.max(max, conseq)
+        
     }
     
     return max
