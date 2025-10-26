@@ -1,15 +1,13 @@
 function get_single_element(arr) {
-    let flag =0
+    let count =0
     for (let i = 0; i < arr.length; i++) {
-        flag = 0
+        count  = 0
         for (let j = 0; j < arr.length; j++) {
-            if(i === j) continue            
-            if (arr[i] === arr[j]) {
-                flag = 1
-                break
-            }  
+            if(arr[i] === arr[j])  {
+                count++
+            }
         }
-        if (flag===0) {
+        if (count === 1) {
             return arr[i]
         }
     }
