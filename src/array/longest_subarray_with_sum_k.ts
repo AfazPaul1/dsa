@@ -5,15 +5,13 @@ function longest_subarray_with_sum_k(arr, k) {
     for (let i = 0; i < arr.length; i++) {
         sum = 0
         for (let j = i; j < arr.length; j++) {
-            let newArr = arr.slice(i,j+1)
             sum+=arr[j]
-            let count=newArr.length
             if(sum===k) {
-                console.log(newArr);
-                longest_length=Math.max(count, longest_length)
+                longest_length=Math.max((j+1)-i, longest_length)
             }  
         }
     }
     return longest_length
 }
-console.log(longest_subarray_with_sum_k([2,3,5,1,9], 10));
+console.log(longest_subarray_with_sum_k([2,3,5,1,9], 10));//3
+console.log(longest_subarray_with_sum_k([2,3,5], 5));//2
