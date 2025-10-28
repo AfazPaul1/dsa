@@ -1,42 +1,24 @@
 function sort_an_array_of_0s_1s_and_2s(arr) {
-    return mergeSort(arr, 0, arr.length-1)
+    let count0 = 0
+    let count1 = 0
+    let count2 = 0
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i] === 0) count0++
+        else if(arr[i] === 1) count1++
+        else count2++
+    }
+    for (let j = 0; j < count0; j++) {
+        arr[j] = 0
+    }
+    for (let k = count0; k < count1+count0; k++) {
+        arr[k] = 1
+    }
+    for (let l = count1+count0; l < arr.length; l++) {
+        arr[l] = 2
+        
+    }
+    return arr
 }
 console.log(sort_an_array_of_0s_1s_and_2s([2,0,2,1,1,0]));
 
-function mergeSort(arr, start, end) {
-    if(start ===  end) {
-        return
-    }
-    let mid = Math.floor((start+end)/2)
-    mergeSort(arr, start, mid)
-    mergeSort(arr, mid+1, end)
-    merge(arr, start, mid, end)
-    return arr
-}
-function merge(arr, start, mid, end) {
-    let left = start
-    let right = mid+1
-    let temp = []
-    while(right <= end && left <= mid ) { //0,2,2  0,1,1
-        if(arr[left] < arr[right]) {
-            temp.push(arr[left])
-            left++;
-        } else {
-            temp.push(arr[right])
-            right++;
-        }
-    }
-    while(right <=end) {
-        temp.push(arr[right]);
-        right++
-    }
-    while(left <=mid) {
-        temp.push(arr[left])
-        left++
-    }
-    for (let i = 0; i < temp.length; i++) {
-        arr[start] = temp[i]
-        start++
-    }
-    return arr
-}
+
