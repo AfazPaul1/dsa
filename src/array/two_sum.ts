@@ -1,10 +1,12 @@
 function two_sum(arr, target) {
+    const hash =  new Map<number, number>()
     for (let i = 0; i < arr.length; i++) {
-        for (let j = i+1; j < arr.length; j++) {
-            if(i ===j) continue
-            if(arr[j] + arr[i] === target)  return [i,j]
-        }
+        let comp = target-arr[i]
+        if(hash.has(comp)) return [i, hash.get(comp)]
+        hash.set(arr[i], i)
     }
+    return -1
+    
 
 }
 console.log(two_sum([2,6,5,8,11], 14));
