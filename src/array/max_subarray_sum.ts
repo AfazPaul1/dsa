@@ -4,6 +4,7 @@ function max_subarray_sum(array) {
     let tempStart = 0
     let startI = 0
     let endI = 0
+    let subarray:number[][] = []
      for (let i = 0; i < array.length; i++) {
         if(sum === 0)  tempStart = i
         sum += array[i]
@@ -11,10 +12,16 @@ function max_subarray_sum(array) {
             max = sum
             startI = tempStart
             endI = i
+            subarray = [[startI, endI]]
+        } else if (sum === max) {
+            startI = tempStart
+            endI = i
+            subarray.push([startI, endI])
         }
         if(sum < 0) sum = 0
      }
-    return [array.slice(startI, endI+1), max]
+    let result = subarray.map(([startI, endI]) => array.slice(startI, endI+1))
+    return [result, max]
 }
 //console.log(max_subarray_sum([-2,-2,4,-1,-2,1,5,-3])); //[ [ 4, -1, -2, 1, 5 ], 7 ]
 console.log(max_subarray_sum([-2,-2,4,-1,-2,1,5,-3, -5, -2,4,-1,-2,1,5,])); //[ [], 7 ]
