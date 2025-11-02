@@ -1,13 +1,15 @@
 function max_subarray_sum(array) {
     let max= 0
     let sum = 0
+    let tempStart = 0
     let startI = 0
     let endI = 0
      for (let i = 0; i < array.length; i++) {
-        if(sum === 0)  startI = i
+        if(sum === 0)  tempStart = i
         sum += array[i]
         if(sum > max ) {
             max = sum
+            startI = tempStart
             endI = i
         }
         if(sum < 0) sum = 0
