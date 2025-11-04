@@ -7,11 +7,13 @@ function all_permutation_2(array, idx, ans) {
     }
     for (let i = idx; i < array.length; i++) {
         [array[idx], array[i]] = [array[i], array[idx]]
-        all_permutation_2(array, idx+1, ans)
+        all_permutation_2(array, idx+1, ans);
+        //i wasnt restoring the state which is such an important thing in backtracking
+        [array[i], array[idx]] = [array[idx], array[i]]
     }
 }
 const res1:number[][] = []
-console.log(all_permutation_2([1,2,3], 0, res1));//[[ 1, 2, 3 ],[ 1, 3, 2 ],[ 3, 1, 2 ],[ 3, 2, 1 ],[ 1, 2, 3 ],[ 1, 3, 2 ]]
+console.log(all_permutation_2([1,2,3], 0, res1));//[[ 1, 2, 3 ],[ 1, 3, 2 ],[ 2, 1, 3 ],[ 2, 3, 1 ],[ 3, 2, 1 ],[ 3, 1, 2 ]]
 console.log(res1);
 
 
