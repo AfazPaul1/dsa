@@ -1,9 +1,22 @@
-import all_permutations from '../recursion/all_permutations'
 function next_permutation(array:number[]) {
-    const res:number[][] = []
-    all_permutations(array, [], [false, false, false], res)
-    const idx = res.findIndex((arr) => arr.every((element, i) => element === array[i]))
-    return res[idx+1]
+    let n = array.length
+    let idx = 0
+    for (let i = n-2; i >= 0; i--) {
+        if (array[i] < array[i+1]) {
+            idx = i
+            break
+        }  
+    }
+    for (let j = n-1; j >= idx; j--) {
+        if (array[j] > array[idx]) {
+            [array[idx], array[j]] = [array[j], array[idx]]
+            break
+        }  
+    }
+    const newArr = array.splice(idx+1, n-1).reverse()
+    return [...array, ...newArr]
+
+  
 }
-console.log(next_permutation([1,2,3]));//[ 1, 3, 2 ]
-//console.log(next_permutation([2,1,5,4,3,0,0]));
+//console.log(next_permutation([1,2,3]));//[ 1, 3, 2 ]
+console.log(next_permutation([2,1,5,4,3,0,0]));
