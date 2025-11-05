@@ -1,4 +1,4 @@
-function all_permutations(array:number[], ds:number[], map: boolean[], res:number[][]) {
+export default function all_permutations(array:number[], ds:number[], map: boolean[], res:number[][]) {
     if(ds.length === array.length ) {
         res.push([...ds])
         return
@@ -15,5 +15,5 @@ function all_permutations(array:number[], ds:number[], map: boolean[], res:numbe
 }
 const ans: number[][] = []
 all_permutations([1,2,3], [], [false, false, false], ans)
-console.log(ans);
+//console.log(ans);
 
