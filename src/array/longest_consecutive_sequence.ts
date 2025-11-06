@@ -1,13 +1,21 @@
 function longest_consecutive_sequence(array:number[]) {
     let longest = 1
+    let last_min = -1
+    let count = 0
+    array.sort((a, b) => a-b)
     for (let i = 0; i < array.length; i++) {
-        let x = array[i]
-        let count = 1
-        while(array.some(ele => ele === x+1)) {
-            count++
-            x = x+1
+        if (array[i] === last_min) {
+            continue
         }
-        longest = Math.max(longest, count)
+        else if(array[i] - 1 === last_min){
+            count++
+            longest = Math.max(longest, count)
+        } else {
+            count = 1
+        }
+        last_min = array[i]
+        
+        
     }
     return longest
 }
