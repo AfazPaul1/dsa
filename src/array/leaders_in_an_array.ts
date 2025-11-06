@@ -1,17 +1,11 @@
 function leaders_in_an_array(array) {
     const res = []
-    let flag = true
-    for (let i = 0; i < array.length; i++) {
-        flag = true
-        for (let j = i+1; j < array.length; j++) {
-            if(array[j] > array[i]) {
-                flag = false
-                break
-            }
-        }
-         if(flag === true) {
+    let max = 0
+    for (let i = array.length-1; i> 0; i--) {
+        if(array[i] > max) {
             res.push(array[i])
-         }
+        }
+        max = Math.max(array[i], max)
     }
     return res
 }
