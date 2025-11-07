@@ -1,24 +1,20 @@
 function set_matrix_zeroes(array: number[][]) {
-    let infoRow = new Set()
-    let infoCol = new Set()
+    let n = array.length
+    let m = array[1].length
+    let infoRow = new Array(n).fill(0)
+    let infoCol = new Array(n).fill(0)
     for (let i = 0; i < array.length; i++) {
         for (let j = 0; j < array[i].length; j++) {
             if (array[i][j] === 0) {
-                infoRow.add(i)
-                infoCol.add(j)
-            }
+                infoRow[i] = 1
+                infoCol[j] = 1           }
         }
     }
-    console.log(infoCol, infoRow);
+    //console.log(infoCol, infoRow);
     
     for (let i = 0; i < array.length; i++) {
         for (let j = 0; j < array[i].length; j++) {
-            if (infoRow.has(i)) {
-                array[i][j] = 0
-            } 
-            if(infoCol.has(j)) {
-                array[i][j] = 0
-            }   
+            if (infoRow[i] === 1 || infoCol[j] === 1) array[i][j] = 0   
         } 
     }
     return array
