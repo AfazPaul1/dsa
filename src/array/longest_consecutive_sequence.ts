@@ -5,9 +5,9 @@ function longest_consecutive_sequence(array:number[]) {
     let hash = new Set(array)
     for (const ele of hash) {
         if(!hash.has(ele-1)) {
-            let count = 0
+            let count = 1 //we know that ele exists so 
             let curEle = ele
-            while(hash.has(curEle)){
+            while(hash.has(curEle+1)){
                 count++
                 curEle++
             }
