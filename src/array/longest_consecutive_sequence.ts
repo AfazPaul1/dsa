@@ -2,20 +2,17 @@ function longest_consecutive_sequence(array:number[]) {
     let longest = 1
     let last_min = -1
     let count = 0
-    array.sort((a, b) => a-b)
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === last_min) {
-            continue
-        }
-        else if(array[i] - 1 === last_min){
-            count++
+    let hash = new Set(array)
+    for (const ele of hash) {
+        if(!hash.has(ele-1)) {
+            let count = 0
+            let curEle = ele
+            while(hash.has(curEle)){
+                count++
+                curEle++
+            }
             longest = Math.max(longest, count)
-        } else {
-            count = 1
         }
-        last_min = array[i]
-        
-        
     }
     return longest
 }
