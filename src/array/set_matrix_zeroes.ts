@@ -3,15 +3,18 @@ function set_matrix_zeroes(array: number[][]) {
     let m = array[1].length
     let col0 = 1
     for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array[i].length; j++) {
-            if(array[i][0] === 0) col0 = 0
-            else if(array[i][j] === 0) {
+        for (let j = 0; j < array[i].length; j++) {         
+            if(array[i][j] === 0) {
                 //we use these as the row and column arrays
                 //the problem we face here is array[0][0] will it refer to the row or column?
                 //also if it refers to the row where will we store the column tracker?
                 //we just use a extra variable for it
-                array[0][j] = 0
                 array[i][0] = 0
+                if(j!=0) {
+                    array[0][j] = 0
+                } else {
+                    col0 = 0
+                }
 
             }
         }
@@ -22,11 +25,23 @@ function set_matrix_zeroes(array: number[][]) {
         for (let j = 1; j < array.length; j++) {
             //since we have used the first row and column to track we check for each element like for 2,3 we check whether 0,3 or 2,0 are 0 if they are we change this too to 0
             //we also have to track the edge case of col0, like if j = 0 we do not check 0,0 but col0
-            //if()
             if(array[0][j] === 0 || array[i][0] === 0) {
                 array[i][j] = 0
             } 
         }   
+    }
+    //also theres a case of what we change first? rows or colums? 
+    //similar thing happens here if we change the column first where the row will mistaken it to be original 0 and change
+    //also since col0 is stored separately we can safely change it after changing row
+    for (let j = 0; j < array.length; j++) {
+        if (array[0][0] === 0) {
+            array[0][j] = 0
+        }
+    }
+    for (let i = 0; i < array.length; i++) {
+        if (col0 === 0) {
+            array[i][0] = 0
+        }
     }
     
     return array
