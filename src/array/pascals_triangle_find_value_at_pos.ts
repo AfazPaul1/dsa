@@ -1,4 +1,4 @@
-function pascals_triangle_find_value_at_pos(n, m) {
+export default function pascals_triangle_find_value_at_pos(n, m) {
     let res = 1
     for (let i = 0; i < m; i++) {
         res*=n-i
