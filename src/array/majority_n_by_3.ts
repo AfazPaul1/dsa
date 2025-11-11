@@ -3,11 +3,13 @@ function majority_n_by_3(array: number[]) {
     const res= new Set()
     const hash =  new Map<number, number>()
     for (let i = 0; i < array.length; i++) {
+        if(res .has(array[i])) continue
         let updated  = (hash.get(array[i]) || 0) + 1
         hash.set(array[i], updated)
         if(updated > n_by_3) {
             res.add(array[i])
         }
+        if(res.size === 2) return res
     }
     console.log(hash);
     
