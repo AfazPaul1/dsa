@@ -1,12 +1,16 @@
 import pascals_triangle_find_value_at_pos from "./pascals_triangle_find_value_at_pos";
 function pascals_triangle_entire(rows) {
     const ans = []
-    for (let i = 0; i < rows; i++) {
-        let rowItems = []
-        for (let j = 0; j <= i; j++) {
-            rowItems.push(pascals_triangle_find_value_at_pos(i,j))
+    for (let i = 1; i <= rows; i++) {
+        let rowItems = [1]
+        let res = 1
+        for (let j = 1; j < i; j++) {
+            res*=i-j //row-col
+            res/=j
+            rowItems.push(res)
         }
         ans.push(rowItems)
+        
     }
     return ans
 }
