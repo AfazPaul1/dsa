@@ -1,20 +1,36 @@
 function majority_n_by_3(array: number[]) {
     const n_by_3 = Math.floor(array.length/3)
-    const res= new Set()
-    const hash =  new Map<number, number>()
+    let ele1 = 0
+    let count1 = 0
+    let ele2 = 0
+    let count2 = 0
+    let res = []
     for (let i = 0; i < array.length; i++) {
-        if(res .has(array[i])) continue
-        let updated  = (hash.get(array[i]) || 0) + 1
-        hash.set(array[i], updated)
-        if(updated > n_by_3) {
-            res.add(array[i])
+        if(count1 === 0 && ele2 !== array[i]) {
+            count1 = 1
+            ele1 = array[i]
         }
-        if(res.size === 2) return res
+        else if(count2 === 0 && ele1 !== array[i]) {
+            count2 = 1
+            ele2 = array[i]
+        }
+        else if(array[i] == ele1) count1++
+        else if(array[i] === ele2) count2++
+        else {
+            count1--
+            count2--
+        }
     }
-    console.log(hash);
-    
+    count1 = 0
+    count2 = 0
+    for (let i = 0; i < array.length; i++) {
+        if(array[i] === ele1) count1++
+        else if(array[i] === ele2) count2++
+    }
+    if(count1 > n_by_3) res.push(ele1)
+    if(count2 > n_by_3) res.push(ele2)
+    res.sort((a,b) => a-b)
     return res
-
-    
 }
 console.log(majority_n_by_3([1,2,2,3,2]));
+console.log(majority_n_by_3([11,33,33,11,33,11]));
