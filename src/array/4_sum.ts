@@ -1,27 +1,35 @@
-function four_sum(array) {
-    let seen = new Set()
+function four_sum(array, target) {
+    array.sort((a,b) => a-b)
     let quadruplets = []
     for (let i = 0; i < array.length; i++) {
+    if  (i !== 0 && array[i] === array[i-1]) continue
         for (let j = i+1; j < array.length; j++) {
-            let hashSet = new Set()
-            for (let k = j+1; k < array.length; k++) {
-                let l = -(array[i] + array[j] + array[k])
-                if(hashSet.has(l)) {
-                    let quadruplet = [array[i] , array[j] , array[k] , l].sort((a,b) => a-b)
-                    let quadrupletStr = quadruplet.join(",") 
-                    if(!seen.has(quadrupletStr)) {
-                        seen.add(quadrupletStr)
-                        quadruplets.push(quadruplet)
-                    }
+        //was wondering the condition here liek i+1 like if its the first element do do the comaprision and directly proceed
+        if  (j !== i+1 && array[j] === array[j-1]) continue
+            let k = j+1
+            let l = array.length-1
+            while(k < l) {
+                let sum = array[i] + array[j] + array[k] + array[l]
+                if(sum < target) {
+                    k++
                 }
-                //everything from j to k will be in the hashset
-                //why not the entire array?
-                //because all values should be distinct same values cant repeat and if we include the entire array that'll happen
-                hashSet.add(array[k])
-            }          
-        }   
+                else if (sum > target) {
+                    l--
+                } 
+                else {
+                    quadruplets.push([array[i], array[j], array[k], array[l]])
+                    k++
+                    l--
+                    while (k<l && array[k] === array[k-1]) k++
+                    while (k<l && array[l] === array[l+1]) l--
+                }
+            }                  
+        }      
     }
     return quadruplets
 }
-console.log(four_sum([1,0,-1,0,-2,2]));//[ [ -1, 0, 0, 1 ], [ -2, -1, 1, 2 ], [ -2, 0, 0, 2 ] ]
-console.log(four_sum([1,2,-1-2,2,0,-1]));
+console.log(four_sum([1,0,-1,0,-2,2], 0));//[ [ -1, 0, 0, 1 ], [ -2, -1, 1, 2 ], [ -2, 0, 0, 2 ] ]
+//console.log(four_sum([1,2,-1-2,2,0,-1], 0));
+console.log(four_sum([1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5], 8));
+console.log(four_sum([4,3,3,4,4,2,1,2,1,1], 9));
+
