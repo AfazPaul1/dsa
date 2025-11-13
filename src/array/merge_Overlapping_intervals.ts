@@ -13,21 +13,18 @@ function merge_Overlapping_intervals(array) {
     //first when i start for 1st element and go through at some point when i doesnt overlap i break out and dont check anymore, i also dont start from the immediate next element but from where i left off cause they are already part of a sequence so no use starting from them again
     //how how do i loop this in a for every thing is looped but we dont want that maybe i could skip yes 
     let res = []
-    let newStart = -1
-    for (let i = 0; i < array.length; i++) {
-        if(i < newStart) continue
+    for (let i = 0; i < array.length; i++) {  
         let first = array[i][0]
         let second = array[i][1]
+        if(res.length && second <= res[res.length-1][1] ) continue
         if(!array[i+1]) {
             res.push([first, second])
             break
         }
         for (let j = i+1; j < array.length; j++) {
-            
             if(second > array[j][0]) {
                 second = array[j][1]
             } else {
-                newStart = j
                 res.push([first, second])
                 break
             }
