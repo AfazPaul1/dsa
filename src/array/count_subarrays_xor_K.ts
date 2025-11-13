@@ -1,11 +1,14 @@
 function count_subarrays_xor_K(array, k) {
     let count = 0
+    const hash = new Map<number, number>()
+    hash.set(0,1)
+    let xor = 0 
     for (let i = 0; i < array.length; i++) {
-        let xor = 0 //0 is the identity value for xor operations
-        for (let j = i; j < array.length; j++) {
-            xor^=array[j]
-            if(xor === k) count++
-        }
+        xor^=array[i]
+        hash.set(xor, (hash.get(xor) || 0) + 1)
+        let intr = xor^k
+        if (hash.has(intr)) count+=hash.get(intr)!
+        
     }   
     return count
 }
