@@ -4,10 +4,15 @@ function merge_two_sorted_arrays(arr1, arr2) {
     let i = n-1
     let j = 0
     
-    while(arr1[i] > arr2[j]) {
-        [arr1[i], arr2[j]] = [arr2[j], arr1[i]]
-        i--
-        j++
+    while(i >= 0 && j < m) {
+        if(arr1[i] > arr2[j]) {
+            [arr1[i], arr2[j]] = [arr2[j], arr1[i]]
+            i--
+            j++
+        } else {
+            break
+        }
+        
     }
     arr1.sort((a,b) => a-b)
     arr2.sort((a,b) => a-b)
