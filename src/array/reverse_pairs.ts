@@ -1,17 +1,17 @@
 function reverse_pairs(array: number[]) {
-    return mergeSort(array, 0, array.length-1)
+    return mergeSortPairs(array, 0, array.length-1)
 }
 console.log(reverse_pairs([1,3,2,3,1]));//2
 console.log(reverse_pairs([3,2,1,4]));//1
 console.log(reverse_pairs([40, 25, 19, 12, 9,6, 2]));//1
-function mergeSort(array:number[], low:number, high:number) {
+function mergeSortPairs(array:number[], low:number, high:number):number {
     let count = 0
     if (low === high) {
         return count
     }
     let mid = Math.floor((low+high)/2)
-    count+=mergeSort(array, low, mid)
-    count+=mergeSort(array, mid+1, high)
+    count+=mergeSortPairs(array, low, mid)
+    count+=mergeSortPairs(array, mid+1, high)
     count+=findReversePairs(array, low, mid, high)
     merge(array, low, mid, high)
     return count
