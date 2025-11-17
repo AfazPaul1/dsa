@@ -1,4 +1,4 @@
-function lower_bound(array: number[], target:number) {
+function search_insert_position(array: number[], target:number) {
     let low = 0
     let high = array.length-1
     let ans = array.length
@@ -13,6 +13,6 @@ function lower_bound(array: number[], target:number) {
     }
     return ans
 }
-console.log(lower_bound([3, 4, 7, 9, 12, 16, 17], 6));//6
-console.log(lower_bound([3, 4, 6, 7, 9, 12, 16, 17], 15)); //16
-console.log(lower_bound([3, 4, 6, 7, 9, 12, 16, 17], 88));//8
+console.log(search_insert_position([3, 4, 7, 9, 12, 16, 17], 6));//6
+console.log(search_insert_position([3, 4, 6, 7, 9, 12, 16, 17], 15)); //16
+console.log(search_insert_position([3, 4, 6, 7, 9, 12, 16, 17], 88));//8
