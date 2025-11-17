@@ -14,7 +14,7 @@ function upperBound(array, x) {
     return ans
 
 }
-console.log(upperBound([1,2,2,3], 2));
+console.log(upperBound([1,2,2,3], 2));//3
 console.log(upperBound([3,5,8,9,15,19], 10));
 console.log(upperBound([3,5,8,9,15,19], 9));
 
