@@ -6,13 +6,25 @@ function Find_times_array_rotated(array) {
     let ans = -1
     while(low <= high) {
         let mid = Math.floor((low+high)/2)
+        if(array[low] <= array[high]) {
+            if(array[low] < min){
+                min = array[low]
+                ans = low
+                break
+            }
+        }
         if(array[low] <= array[mid]){
-            min = Math.min(min, array[low])
-            if(min === array[low]) ans = low
+            if(array[low] < min){
+                min = array[low]
+                ans = low
+            }
             low = mid+1
         } else {
             min = Math.min(min, array[mid])
-            if(min === array[mid]) ans = mid
+            if(array[mid] < min){
+                min = array[mid]
+                ans = mid
+            }
             high = mid-1
         }
     }
