@@ -23,4 +23,6 @@ function search_minimum_rotated_sorted_array(array) {
     }
     return ans  
 }
-console.log(search_minimum_rotated_sorted_array([4,5,6,7,0,1,2,3]));
+console.log(search_minimum_rotated_sorted_array([4,5,6,7,0,1,2,3]));//0
+console.log(search_minimum_rotated_sorted_array([7, 8, 1, 2, 3, 3, 3, 4, 5, 6]));//1 this still retuns correctly without any code to handle duplictaes? ah probably because they occur a=on the right sorted part and are eliminates so never looked at. oh i missed a point here cause duplicates only become an issue when low  = mid  = high
+console.log(search_minimum_rotated_sorted_array([2, 2, 2, 2, 3, 1, 2]));//we get 2 when it should have been 1
