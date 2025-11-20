@@ -9,9 +9,14 @@ function find_peak_element(array) {
         let mid = Math.floor((low+high) /2)
         if(array[mid] > array[mid-1] && array[mid] > array[mid+1]) return mid
         else if(array[mid] > array[mid-1]) low=mid+1
-        //if checks where both are true if that if fails then one or both must have been wrong? i dont think both can we wrong since slope at least one condition must be true cause only 1 peak? if multiple peaks mid might be lesser than both left and right
-        //we check which is true by first checking a single condition individually if that turns true run that code        //if that turns false then the other must have been true 
-        else high = mid-1
+        else if (array[mid] > array[mid+1]) high = mid-1
+        //with multiple peaks both the conditions in if could be false so we have to handle it else it would go unhandled
+        //in that case it doesnt matter where we go left or right cause there will be peaks on both side
+        //actually wait i think the previoud case too handled that lol
+        // the else would have handled that case too
+        //this is just being specific 
+        //the wrong thing would have been to do without the else and a single if and 2 else ifs
+        else low=mid+1
     }
     return -1
 }
