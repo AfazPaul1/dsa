@@ -7,6 +7,6 @@ export default function binary_exponentiation(n, m) {
     }
     return res
 }
-console.log(binary_exponentiation(3, 13));//1594323
-console.log(binary_exponentiation(5, 2));//25
-console.log(binary_exponentiation(3, 3));//27
+// console.log(binary_exponentiation(3, 13));//1594323
+// console.log(binary_exponentiation(5, 2));//25
+// console.log(binary_exponentiation(3, 3));//27
