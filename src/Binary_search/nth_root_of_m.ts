@@ -1,13 +1,13 @@
-import binary_exponentiation from "./binary_exponentiation"
+import bounded_exponentiation from "./bounded_exponentiation"
 function nth_root_of_m(n, m) {
-    for (let i = 1; i < m; i++) {
-        let sq = binary_exponentiation(i,n)
-        if(sq === m) {
-            return i
-        }
-        else if(sq > m) {
-            break
-        }
+    let low = 1
+    let high = m
+    while(low <= high) {
+        let mid = Math.floor((low+high)/2)
+        let exp = bounded_exponentiation(mid, n, m)
+        if(exp === m) return mid
+        else if(exp > m) high = mid-1
+        else low = mid+1
     }
     return -1
 }
